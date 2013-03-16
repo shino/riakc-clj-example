@@ -1,4 +1,4 @@
-(ns RiakCljExample.core
+(ns riakc-clj-example.core
   (:import
    [com.basho.riak.client RiakFactory]
    [com.basho.riak.client IRiakObject]

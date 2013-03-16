@@ -1,4 +1,4 @@
-(ns RiakCljExample.test.core
+(ns riakc-clj-example.test.core
   (:use [RiakCljExample.core])
   (:use [clojure.test]))
 
