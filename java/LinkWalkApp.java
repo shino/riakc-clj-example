@@ -15,8 +15,9 @@ public class LinkWalkApp
         IRiakClient client = RiakFactory.httpClient();
         Bucket b = client.fetchBucket("people").execute();
 
-        IRiakObject myObject = b.fetch("sean").execute(); 
+        IRiakObject myObject = b.fetch("sean").execute();
         WalkResult result = client.walk(myObject)
+                            .addStep("people", "friend", true)
                             .addStep("people", "friend")
                             .execute();
 
@@ -28,7 +29,7 @@ public class LinkWalkApp
              Collection<IRiakObject> c = i.next();
              for (IRiakObject o : c)
              {
-                 System.out.println(count + " " + o.getValueAsString());
+                 System.out.println(count + ": " + o.getValueAsString());
              }
         }
 
