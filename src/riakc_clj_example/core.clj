@@ -32,7 +32,7 @@
 
 (defn get-robj-and-print-result
   [rclient bucket-name key-name]
-  (let [robj (get-robj rclient "people" "sean")]
+  (let [robj (get-robj rclient bucket-name key-name)]
     (println "get-robj" robj)
     (println "get-robj value" (.getValueAsString robj))
     (println "get-robj hasLinks" (-> (.hasLinks robj) (.toString)))
@@ -41,7 +41,7 @@
   
 (defn link-walk-and-print-result
   [rclient bucket-name key-name tag-name]
-  (let [walk-result (link-walk rclient "people" "sean" "friend")]
+  (let [walk-result (link-walk rclient bucket-name key-name tag-name)]
     (println (flatten (map (fn [col]
                              (map (fn [obj] (.getValueAsString obj)) col))
                            walk-result)))))
@@ -52,5 +52,6 @@
     (try
       (get-robj-and-print-result httpc "people" "sean")
       (link-walk-and-print-result httpc "people" "sean" "friend")
-      (link-walk-and-print-result pbc "people" "sean" "friend")
+      ;; (link-walk-and-print-result httpc "people" "many_links_1000" "friend")
+      ;; (link-walk-and-print-result pbc "people" "sean" "friend")
       )))
