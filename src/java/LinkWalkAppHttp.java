@@ -8,7 +8,7 @@ import com.basho.riak.client.query.WalkResult;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class LinkWalkApp
+public class LinkWalkAppHttp
 {
     public static void main( String[] args ) throws RiakException
     {
